@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.annotations.Test;
 
 @Configuration
@@ -22,6 +23,7 @@ public class BasicSprinDITest {
 	
 	@Test
 	public void testBasicDI() {
+		ApplicationContext anotherContext = new ClassPathXmlApplicationContext();
 		ApplicationContext aContext = new AnnotationConfigApplicationContext(BasicSprinDITest.class);
 		MessagePrinter aPrinter = aContext.getBean(MessagePrinter.class);
 		aPrinter.printMessage();
