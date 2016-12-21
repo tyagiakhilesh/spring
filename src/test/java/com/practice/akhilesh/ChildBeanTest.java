@@ -16,5 +16,6 @@ public class ChildBeanTest {
 		Properties prop = aBean.getBeanProperties();
 		Assert.assertTrue(prop.getProperty("adminEmail").equals("admin@hpe.com"));
 		Assert.assertTrue(prop.getProperty("secondaryEmail").equals("akhilesh.tyagi@hpe.com"));
+		Assert.assertTrue(prop.getProperty("overridenInChild").equals("ChildSpcificProperty"));
 	}
 }

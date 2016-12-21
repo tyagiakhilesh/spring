@@ -9,6 +9,7 @@
 		<property name="beanProperties">
 			<props>
 				<prop key="adminEmail">admin@hpe.com</prop>
+				<prop key="overridenInChild">overridenInChild</prop>
 			</props>
 		</property>
 	</bean>
@@ -17,6 +18,7 @@
 		<property name="beanProperties">
 			<props merge="true">
 				<prop key="secondaryEmail">akhilesh.tyagi@hpe.com</prop>
+				<prop key="overridenInChild">ChildSpcificProperty</prop>
 			</props>
 		</property>
 	</bean>
