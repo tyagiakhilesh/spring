@@ -12,4 +12,8 @@ public class ChildBean {
 	public void setBeanProperties(Properties beanProperties) {
 		this.beanProperties = beanProperties;
 	}
+	
+	public void destroy() {
+		System.out.println("Destroy method is called");
+	}
 }
