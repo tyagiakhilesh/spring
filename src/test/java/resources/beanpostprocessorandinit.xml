@@ -4,15 +4,51 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<!-- Post processor bean -->
 	<bean id="myChildBeanWithPostProcessor"
-		class="com.practice.akhilesh.override.spring.MyCustomBeanPostProcessorImpl"
-		scope="prototype"
-		init-method="init">
+		class="com.practice.akhilesh.override.spring.MyCustomBeanPostProcessorImpl">
+	</bean>
+	
+	<bean id="parent" abstract="true">
+		<property name="beanProperties">
+			<props>
+				<prop key="adminEmail">admin@hpe.com</prop>
+				<prop key="overridenInChild">overridenInChild</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="child" parent="parent" class="com.practice.akhilesh.ChildBean" destroy-method="destroy">
 		<property name="beanProperties">
 			<props merge="true">
 				<prop key="secondaryEmail">akhilesh.tyagi@hpe.com</prop>
 				<prop key="overridenInChild">ChildSpcificProperty</prop>
 			</props>
+		</property>
+	</bean>
+	
+	<bean id="aBeanHavingCollections" class="com.practice.akhilesh.ABeanHavingCollections">
+		<!-- Constructor DI -->
+		<constructor-arg type="java.lang.String" value="akhilesh"/>
+		
+		<!-- Setter DI -->
+		<property name="properties">
+			<props>
+				<prop key="firstKey">firstKey</prop>
+				<prop key="secondKey">secondKey</prop>
+			</props>
+		</property>
+		<property name="aList">
+			<list>
+				<value type="java.lang.String">1</value>
+				<value type="java.lang.String">hello</value>
+			</list>
+		</property>
+		<property name="aMap">
+			<map>
+				<entry key="firstMapKey" value="firstMapKeyValue"/>
+				<entry key="secondMapKey" value="secondMapKeyValue"/>
+			</map>
 		</property>
 	</bean>
 </beans>

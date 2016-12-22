@@ -16,4 +16,9 @@ public class ChildBean {
 	public void destroy() {
 		System.out.println("Destroy method is called");
 	}
+	
+	public void init() {
+		System.out.println("This is the method that shall be called during initialization phase"
+				+ " but before BeanPostProcessor methods.");	
+	}
 }
